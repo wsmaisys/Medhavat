@@ -1,0 +1,123 @@
+:root {
+  --color-slate: #0f172a;
+  --color-cyan: #00d2ff;
+  --color-emerald: #10b981;
+  --color-off-white: #f8fafc;
+  --color-white: #ffffff;
+  --color-border: #e2e8f0;
+  --font-heading: "Plus Jakarta Sans", "Trebuchet MS", sans-serif;
+  --font-body: "DM Sans", "Trebuchet MS", sans-serif;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem clamp(1.25rem, 4vw, 4rem);
+  color: var(--color-off-white);
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, rgba(8, 22, 44, 0.82), transparent);
+}
+
+.site-logo,
+.site-nav a,
+.site-cta {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.site-logo-mark {
+  display: block;
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.site-logo-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1) sepia(1) saturate(7) hue-rotate(151deg) brightness(1.1);
+  opacity: 0.96;
+}
+
+.site-logo-wordmark {
+  color: var(--color-off-white);
+}
+
+.site-logo-canvas {
+  display: inline-flex;
+}
+
+.site-logo-canvas canvas {
+  display: block;
+  width: auto;
+  height: 2rem;
+}
+
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  font-size: 0.78rem;
+}
+
+.site-nav a {
+  opacity: 0.74;
+  transition: opacity 180ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  opacity: 1;
+}
+
+.site-cta {
+  padding: 0.7rem 1rem;
+  color: var(--color-slate);
+  background: var(--color-emerald);
+  border-radius: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.site-footer {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem clamp(1.25rem, 4vw, 4rem);
+  color: rgba(248, 250, 252, 0.58);
+  font: 0.7rem var(--font-body);
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-footer {
+    gap: 1rem;
+    font-size: 0.62rem;
+  }
+}

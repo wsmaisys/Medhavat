@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mirrored Crystalline Energy Tunnels</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background: #020509;
+        overflow: hidden;
+      }
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      #scene-canvas {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .hero-copy {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        width: min(34vw, 360px);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        pointer-events: none;
+      }
+      .hero-kicker {
+        margin: 0 0 14px;
+        color: #4fe0ff;
+        font-family: "Century Gothic", "Trebuchet MS", sans-serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.82;
+      }
+      .hero-title {
+        position: relative;
+        margin: 0;
+        color: #dcecf4;
+        font-family: "Century Gothic", "Trebuchet MS", sans-serif;
+        font-size: 2.15rem;
+        line-height: 1.06;
+        font-weight: 700;
+        text-wrap: balance;
+        text-shadow:
+          0 0 18px rgba(79, 224, 255, 0.28),
+          0 0 42px rgba(178, 102, 255, 0.18);
+        animation: titleBreath 4.5s ease-in-out infinite;
+      }
+      .hero-title::after {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background: linear-gradient(
+          110deg,
+          transparent 35%,
+          rgba(255, 255, 255, 0.7) 50%,
+          transparent 65%
+        );
+        background-size: 250% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: titleSweep 5s ease-in-out infinite;
+      }
+      .hero-subtitle {
+        margin: 18px 0 0;
+        color: rgba(220, 236, 244, 0.72);
+        font-family: "Trebuchet MS", sans-serif;
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+      @keyframes titleBreath {
+        0%,
+        100% {
+          filter: brightness(0.92);
+        }
+        50% {
+          filter: brightness(1.08);
+        }
+      }
+      @keyframes titleSweep {
+        0%,
+        22% {
+          background-position: 140% 0;
+        }
+        58%,
+        100% {
+          background-position: -40% 0;
+        }
+      }
+      @media (max-width: 800px) {
+        .hero-copy {
+          width: min(62vw, 330px);
+        }
+        .hero-title {
+          font-size: 1.7rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-unreal-bloom="overlay">
+    <section class="hero" aria-label="Medhavat introduction">
+      <canvas id="scene-canvas"></canvas>
+      <div class="hero-copy">
+        <p class="hero-kicker">Medhavat</p>
+        <h1 class="hero-title">
+          Transforming Business Ambition into Intelligent Software.
+        </h1>
+        <p class="hero-subtitle">Intellectual Tech. Real Business Growth.</p>
+      </div>
+    </section>
+
+    <!--
+    Import map for a fully self-hosted, zero-CDN setup.
+    All paths resolve to local files under ./vendor/three/.
+    See README.md for exactly which files to place there.
+  -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three/three.module.js"
+        }
+      }
+    </script>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+/*
+  Deployment header baseline for static hosts that support _headers files.
+  Set-Cookie must be emitted by the application server, never by client JS:
+  Secure; HttpOnly; SameSite=Lax; Path=/
+*/
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), geolocation=(), microphone=()
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Access-Control-Allow-Origin: https://www.medhavat.com
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: Content-Type
