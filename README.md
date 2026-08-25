@@ -12,10 +12,12 @@ Production website in progress for Medhavat, an AI-powered digital transformatio
 - Scene lifecycle: the home scene and dedicated service scenes now use cancellable animation, `ResizeObserver` sizing, and `dispose()` cleanup on `pagehide`. The prepared AI and web prototypes still need migration to the shared service lifecycle contract.
 - Security baseline: `vite.config.js` applies local dev/preview response headers; `public/_headers` contains the production static-host policy. The policy forbids external scripts, frames, objects, fonts, and connections, and enables HSTS, `X-Frame-Options`, COOP, CORP, Referrer-Policy, Permissions-Policy, and MIME sniffing protection.
 - SEO/AEO baseline: `src/seo/metadata.js` generates canonical, Open Graph, Twitter, robots, Organization, WebSite, BreadcrumbList, and answer-oriented WebPage JSON-LD metadata.
-- Logo baseline: `src/components/Logo.js` renders the local `public/images/Medhavat_logo.jpeg` fallback through a configurable image component and supports future vector or canvas renderers.
+- Logo baseline: `src/components/Logo.js` uses the transparent `public/images/medhavat-logo-transparent.png` asset with JPEG compatibility fallbacks.
 - Service pages: four dedicated service routes are now implemented under `pages/services/`, each with its own Three.js hero canvas and PDF-grounded answer block. AI reuses the prepared network/DNA scene; Digital Experience reuses the prepared console scene; Custom Engineering and Brand & Digital Growth use separate local procedural space-tech scenes.
 - Brand globe: Brand & Digital Growth now loads `public/world-countries.geojson` locally and projects country boundaries onto the animated globe, with connected regional nodes, moving route packets, discovery rings, and scalable orbit rings.
 - Background particles: the Brand & Digital Growth scene now renders its 420 floating background particles as instanced spheres while preserving the existing particle size, placement, opacity, and motion.
+- Digital Experience scene: the page now presents a concrete digital-commerce system with monitors, mobile experience, two static database stacks, a modem/router, cloud endpoints, an animated sea, a single container ship, an airplane, and endpoint-to-endpoint connectivity.
+- Digital Experience composition: subsea fiber cables now run continuously from the seabed through landing buoys to the modem; decorative halos, orphan wires, floating packet dots, and redundant monitor overlays were removed. The ship and airplane use randomized movement, and the scene is arranged in separate monitor, infrastructure, sky, and sea layers.
 - Space-tech icons: service capability chips temporarily use animated Font Awesome glyphs from cdnjs. This is an explicit development exception requested for visual exploration; before production, extract only the used glyph/font subset into `public/fonts/` and remove the CDN links and CSP allowances. Existing local service imagery remains available for future below-the-fold content.
 
 ## Repository layout
@@ -72,18 +74,18 @@ Open the URL printed by Vite, usually `http://localhost:5173`. No CDN, remote fo
 
 ## Routing blueprint
 
-| Route                          | Page purpose                | PDF-grounded content                                                          | Three.js experience                                                       |
-| ------------------------------ | --------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `/`                            | Home                        | Hero, friction vs transformation, service buckets, trust bar, industries, CTA | Mirrored crystalline energy portals from `src/scenes/home-bloom-scene.js` |
-| `/services`                    | Service overview            | Four strategic service buckets                                                | Service constellation overview                                            |
-| `/services/digital-experience` | Digital Experience & Web    | Web development, e-commerce, PWA, UI/UX redesign                              | Flowing interface/grid system                                             |
-| `/services/custom-engineering` | Custom Engineering          | Enterprise software, mobile, SaaS architecture, APIs                          | Modular systems architecture                                              |
-| `/services/ai-automation`      | AI & Intelligent Automation | AI agents, chatbots, RAG, predictive analytics, process automation            | Existing network/DNA scene                                                |
-| `/services/brand-growth`       | Brand & Digital Growth      | Brand systems, technical SEO, performance, support                            | Signal/graph growth scene                                                 |
-| `/industries`                  | Industry Solutions          | Healthcare, Finance & Fintech, Retail & E-commerce, Real Estate & Logistics   | Industry impact matrix visualization                                      |
-| `/process`                     | Development Process         | Discovery through Launch & Growth Support, six steps                          | Progressive six-stage pipeline                                            |
-| `/work`                        | Insights & Work             | Case studies, outcomes, and insight content surface                           | Interactive project/work index                                            |
-| `/contact`                     | Strategy consultation       | Form headline, required fields, project scopes, budget ranges                 | Calm low-motion consultation backdrop                                     |
+| Route                          | Page purpose                | PDF-grounded content                                                          | Three.js experience                                                                            |
+| ------------------------------ | --------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `/`                            | Home                        | Hero, friction vs transformation, service buckets, trust bar, industries, CTA | Mirrored crystalline energy portals from `src/scenes/home-bloom-scene.js`                      |
+| `/services`                    | Service overview            | Four strategic service buckets                                                | Service constellation overview                                                                 |
+| `/services/digital-experience` | Digital Experience & Web    | Web development, e-commerce, PWA, UI/UX redesign                              | Connected commerce system with monitors, modem, databases, cloud, sea, ship, and air logistics |
+| `/services/custom-engineering` | Custom Engineering          | Enterprise software, mobile, SaaS architecture, APIs                          | Modular systems architecture                                                                   |
+| `/services/ai-automation`      | AI & Intelligent Automation | AI agents, chatbots, RAG, predictive analytics, process automation            | Existing network/DNA scene                                                                     |
+| `/services/brand-growth`       | Brand & Digital Growth      | Brand systems, technical SEO, performance, support                            | Signal/graph growth scene                                                                      |
+| `/industries`                  | Industry Solutions          | Healthcare, Finance & Fintech, Retail & E-commerce, Real Estate & Logistics   | Industry impact matrix visualization                                                           |
+| `/process`                     | Development Process         | Discovery through Launch & Growth Support, six steps                          | Progressive six-stage pipeline                                                                 |
+| `/work`                        | Insights & Work             | Case studies, outcomes, and insight content surface                           | Interactive project/work index                                                                 |
+| `/contact`                     | Strategy consultation       | Form headline, required fields, project scopes, budget ranges                 | Calm low-motion consultation backdrop                                                          |
 
 ## Brand rules from the PDF
 

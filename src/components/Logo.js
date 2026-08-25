@@ -1,5 +1,9 @@
-const LOGO_SOURCE = "/medhavat-logo-transparent.png";
-const FALLBACK_LOGO = "/images/Medhavat_logo.jpeg";
+const LOGO_SOURCE = "/images/medhavat-logo-transparent.png";
+const LOGO_FALLBACKS = [
+  "/public/images/medhavat-logo-transparent.png",
+  "/images/Medhavat_logo.jpeg",
+  "/public/images/Medhavat_logo.jpeg",
+];
 
 export function renderLogo({
   href = "/",
@@ -15,14 +19,12 @@ export function renderLogo({
   image.alt = alt;
   image.loading = "lazy";
   image.decoding = "async";
-  image.addEventListener(
-    "error",
-    () => {
-      if (image.src.endsWith(FALLBACK_LOGO)) return;
-      image.src = FALLBACK_LOGO;
-    },
-    { once: true },
-  );
+  let fallbackIndex = -1;
+  image.addEventListener("error", () => {
+    fallbackIndex += 1;
+    const fallback = LOGO_FALLBACKS[fallbackIndex];
+    if (fallback) image.src = fallback;
+  });
 
   const link = document.createElement("a");
   link.className = className;

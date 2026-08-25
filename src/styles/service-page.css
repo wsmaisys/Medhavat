@@ -94,6 +94,10 @@ body {
   max-width: 64rem;
 }
 
+.digital-experience-page .service-capabilities {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .space-icon {
   position: relative;
   display: inline-flex;
@@ -194,13 +198,15 @@ body {
 }
 
 @media (max-width: 900px) {
-  .service-capabilities {
+  .service-capabilities,
+  .digital-experience-page .service-capabilities {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
-  .service-capabilities {
+  .service-capabilities,
+  .digital-experience-page .service-capabilities {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
