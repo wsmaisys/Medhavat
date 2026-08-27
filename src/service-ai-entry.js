@@ -1,8 +1,11 @@
 import { renderSiteShell } from "./components/site-shell.js";
+import { renderServiceDetails } from "./components/service-details.js";
 import { applyMetadata } from "./seo/metadata.js";
+import "./scroll-experience.js";
 import "./scenes/service-ai-scene.js";
 
-renderSiteShell({ activePath: "/pages/services/" });
+renderSiteShell({ activePath: "/pages/services/index.html" });
+renderServiceDetails("ai-automation");
 applyMetadata({
   title: "AI & Intelligent Automation",
   path: "/services/ai-automation",

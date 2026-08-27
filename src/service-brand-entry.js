@@ -1,8 +1,11 @@
 import { renderSiteShell } from "./components/site-shell.js";
+import { renderServiceDetails } from "./components/service-details.js";
 import { applyMetadata } from "./seo/metadata.js";
 import { startBrandGlobe } from "./scenes/brand-globe-scene.js";
+import "./scroll-experience.js";
 
-renderSiteShell({ activePath: "./pages/services/" });
+renderSiteShell({ activePath: "/pages/services/index.html" });
+renderServiceDetails("brand-growth");
 applyMetadata({
   title: "Brand & Digital Growth",
   path: "/services/brand-growth",

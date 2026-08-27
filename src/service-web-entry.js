@@ -1,8 +1,11 @@
 import { renderSiteShell } from "./components/site-shell.js";
+import { renderServiceDetails } from "./components/service-details.js";
 import { applyMetadata } from "./seo/metadata.js";
+import "./scroll-experience.js";
 import "./scenes/service-web-scene.js";
 
-renderSiteShell({ activePath: "/pages/services/" });
+renderSiteShell({ activePath: "/pages/services/index.html" });
+renderServiceDetails("digital-experience");
 applyMetadata({
   title: "Digital Experience & Web",
   path: "/services/digital-experience",

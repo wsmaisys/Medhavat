@@ -1,4 +1,4 @@
-import { brand, navigation } from "../content/site-content.js";
+import { brand, company, serviceBuckets } from "../content/site-content.js";
 import { renderLogo } from "./Logo.js";
 
 export function renderSiteShell({ activePath = "" } = {}) {
@@ -12,18 +12,29 @@ export function renderSiteShell({ activePath = "" } = {}) {
     const nav = document.createElement("nav");
     nav.className = "site-nav";
     nav.setAttribute("aria-label", "Primary navigation");
-    navigation.forEach(({ label, href }) => {
+    const menu = document.createElement("details");
+    menu.className = "services-menu";
+    const summary = document.createElement("summary");
+    summary.textContent = "Services";
+    menu.append(summary);
+    const menuPanel = document.createElement("div");
+    menuPanel.className = "services-menu-panel";
+    serviceBuckets.forEach(({ slug, title }) => {
       const link = document.createElement("a");
-      link.href = href;
-      link.textContent = label;
-      if (activePath === href) link.setAttribute("aria-current", "page");
-      nav.append(link);
+      link.href = `/pages/services/${slug}.html`;
+      link.textContent = title;
+      if (activePath === link.getAttribute("href")) {
+        link.setAttribute("aria-current", "page");
+      }
+      menuPanel.append(link);
     });
+    menu.append(menuPanel);
+    nav.append(menu);
 
     const cta = document.createElement("a");
     cta.className = "site-cta";
     cta.href = "/pages/contact.html";
-    cta.textContent = "Book Strategy Call";
+    cta.textContent = "Get Started";
     header.append(nav, cta);
   }
 
@@ -33,6 +44,8 @@ export function renderSiteShell({ activePath = "" } = {}) {
     name.textContent = brand.name;
     const tagline = document.createElement("span");
     tagline.textContent = brand.tagline;
-    footer.append(name, tagline);
+    const contact = document.createElement("span");
+    contact.textContent = `${company.contact.email} | ${company.contact.phone}`;
+    footer.append(name, tagline, contact);
   }
 }

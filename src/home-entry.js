@@ -1,6 +1,7 @@
 import { renderSiteShell } from "./components/site-shell.js";
 import { applyMetadata } from "./seo/metadata.js";
 import "./scenes/home-bloom-scene.js";
+import "./scroll-experience.js";
 
 renderSiteShell();
 applyMetadata({
