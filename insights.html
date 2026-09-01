@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & AEO Primary Metadata -->
+  <title>Insights & Thinking | Medhavat — Case Studies, Tech Articles & News</title>
+  <meta name="description" content="Explore insights, engineering teardowns, AI benchmarks, and digital transformation playbooks from the technical team at Medhavat.">
+  <meta name="keywords" content="Medhavat Insights, AI Case Studies, Software Architecture Articles, Enterprise RAG Guide, Web Performance Best Practices">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://medhavat.com/insights.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://medhavat.com/insights.html">
+  <meta property="og:title" content="Insights & Thinking | Medhavat — Case Studies, Tech Articles & News">
+  <meta property="og:description" content="Deep dives into enterprise software, autonomous AI agents, cloud architectures, and digital growth strategy.">
+  <meta property="og:site_name" content="Medhavat">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Medhavat Insights",
+    "description": "Articles, case studies, and engineering perspectives on digital transformation and AI.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Medhavat",
+      "url": "https://medhavat.com"
+    }
+  }
+  </script>
+
+  <!-- Self-Hosted Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/cursor-wave.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+</head>
+<body data-page="insights">
+
+  <!-- ── Header & Navigation ───────────────────────────────── -->
+  <header class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="./index.html" class="nav__logo" aria-label="Medhavat Home">
+        <div class="nav__logo-mark">
+          <img src="./assets/images/medhavat-logo.svg" alt="Medhavat Logo" width="24" height="21" style="filter: brightness(0) invert(1);" />
+        </div>
+        <div class="nav__logo-text">Medha<span>vat</span></div>
+      </a>
+
+      <nav class="nav__links" aria-label="Main Navigation">
+        <a href="./index.html" class="nav__link">Home</a>
+        <a href="./services.html" class="nav__link">Services</a>
+        <a href="./portfolio.html" class="nav__link">Portfolio</a>
+        <a href="./insights.html" class="nav__link active">Insights</a>
+        <a href="./contact.html" class="nav__link">Contact</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a href="./contact.html" class="btn btn--primary btn--sm">Get Started</a>
+      </div>
+
+      <button class="nav__hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" aria-label="Mobile Navigation Menu">
+    <a href="./index.html" class="nav__link">Home</a>
+    <a href="./services.html" class="nav__link">Services</a>
+    <a href="./portfolio.html" class="nav__link">Portfolio</a>
+    <a href="./insights.html" class="nav__link active">Insights</a>
+    <a href="./contact.html" class="nav__link">Contact</a>
+    <a href="./contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4);">Get Started</a>
+  </div>
+
+  <main id="main-content">
+    <!-- ── Insights Hero Stage ───────────────────────────────── -->
+    <section class="cw-stage cw-stage--hero" id="insights-hero">
+      <div class="container hero cw-content">
+        <div class="hero__badge" data-cursor-wave-mask>
+          <span class="dot"></span>
+          ENGINEERING INTELLIGENCE & RESEARCH
+        </div>
+
+        <h1 class="hero__title" data-cursor-wave-mask>
+          Insights, Case Studies &<br>
+          <span class="gradient-text">Industry Thinking</span>
+        </h1>
+
+        <p class="hero__sub" data-cursor-wave-mask>
+          Tactical playbooks, architectural teardowns, and strategic perspectives on software engineering, AI deployment, and enterprise digital scaling.
+        </p>
+
+        <div class="hero__actions" data-cursor-wave-mask>
+          <a href="#articles" class="btn btn--primary btn--lg">Explore Articles ↓</a>
+          <a href="./contact.html" class="btn btn--ghost btn--lg">Subscribe / Connect</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Articles & Insights Grid with Filter Tabs ─────────── -->
+    <section class="section" id="articles">
+      <div class="container">
+        
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal" data-cursor-wave-mask>
+          <button class="filter-tab active" data-filter="all">All Insights (6)</button>
+          <button class="filter-tab" data-filter="case-study">Case Studies</button>
+          <button class="filter-tab" data-filter="tech">Engineering & AI</button>
+          <button class="filter-tab" data-filter="news">Company News</button>
+        </div>
+
+        <div class="grid-3">
+          <!-- Item 1: Case Study -->
+          <article class="insight-card reveal reveal-delay-1" data-category="case-study" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--case-study">Case Study</span>
+              <h3 class="insight-card__title">How a Healthcare Network Reduced Administrative Overhead by 45%</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              A detailed breakdown of modernizing legacy clinical workflows into a connected, HIPAA-compliant patient operations platform with real-time diagnostic synchronization.
+            </p>
+            <div class="insight-card__footer">
+              <span>Healthcare · Custom Tech</span>
+              <span>8 min read</span>
+            </div>
+          </article>
+
+          <!-- Item 2: Tech Article -->
+          <article class="insight-card reveal reveal-delay-2" data-category="tech" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--article">Engineering Guide</span>
+              <h3 class="insight-card__title">Architecting Production Enterprise RAG: Zero Hallucination Pipelines</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              Why naive vector retrieval fails in production, and how hybrid dense-sparse search, cross-encoder re-ranking, and dynamic chunking safeguard enterprise knowledge systems.
+            </p>
+            <div class="insight-card__footer">
+              <span>AI Engineering · RAG</span>
+              <span>12 min read</span>
+            </div>
+          </article>
+
+          <!-- Item 3: Tech Article -->
+          <article class="insight-card reveal reveal-delay-3" data-category="tech" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--article">Performance</span>
+              <h3 class="insight-card__title">Sub-Second Core Web Vitals: Modern Zero-Dependency Web Architecture</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              How trimming heavy JS framework runtime bloat and adopting modern native browser capabilities delivers 99+ Lighthouse scores and boosts e-commerce conversion rates.
+            </p>
+            <div class="insight-card__footer">
+              <span>Web Architecture</span>
+              <span>6 min read</span>
+            </div>
+          </article>
+
+          <!-- Item 4: Case Study -->
+          <article class="insight-card reveal reveal-delay-1" data-category="case-study" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--case-study">Case Study</span>
+              <h3 class="insight-card__title">Scaling an E-Commerce Platform to Handle 10x Holiday Traffic Surges</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              Database indexing strategies, distributed Redis caching, and edge payment processing optimizations that maintained 99.99% uptime during peak retail shopping events.
+            </p>
+            <div class="insight-card__footer">
+              <span>E-Commerce · Cloud Ops</span>
+              <span>9 min read</span>
+            </div>
+          </article>
+
+          <!-- Item 5: Tech Article -->
+          <article class="insight-card reveal reveal-delay-2" data-category="tech" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--article">AI Strategy</span>
+              <h3 class="insight-card__title">Autonomous AI Agents vs Traditional RPA: Choosing the Right Engine</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              A comprehensive decision framework for CTOs evaluating when to deploy LLM-based autonomous agentic loops versus deterministic robotic process automation rules.
+            </p>
+            <div class="insight-card__footer">
+              <span>AI Agents · Automation</span>
+              <span>10 min read</span>
+            </div>
+          </article>
+
+          <!-- Item 6: News -->
+          <article class="insight-card reveal reveal-delay-3" data-category="news" data-cursor-wave-mask>
+            <div class="insight-card__header">
+              <span class="insight-card__type insight-card__type--news">Company News</span>
+              <h3 class="insight-card__title">Medhavat Expands Enterprise AI Practice with Next-Gen Agent Engineering</h3>
+            </div>
+            <p class="insight-card__excerpt">
+              Announcing our expanded suite of proprietary agentic orchestration modules designed to help SMEs integrate multimodal intelligence into day-to-day operations.
+            </p>
+            <div class="insight-card__footer">
+              <span>Medhavat Updates</span>
+              <span>4 min read</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Call to Action ────────────────────────────────────── -->
+    <section class="section section--sm" id="insights-cta">
+      <div class="container">
+        <div class="cta-banner reveal" data-cursor-wave-mask>
+          <h2 class="cta-banner__title">Stay Ahead of Emerging Technology</h2>
+          <p class="cta-banner__sub">
+            Partner with an engineering team that turns cutting-edge technical insights into concrete business advantages.
+          </p>
+          <div class="cta-banner__actions">
+            <a href="./contact.html" class="btn btn--primary btn--lg">Talk to an Architect →</a>
+            <a href="./services.html" class="btn btn--ghost btn--lg">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo">
+            <div class="nav__logo-mark">
+              <img src="./assets/images/medhavat-logo.svg" alt="Medhavat Logo" width="24" height="21" style="filter: brightness(0) invert(1);" />
+            </div>
+            <div class="nav__logo-text">Medha<span>vat</span></div>
+          </div>
+          <p class="footer__tagline">
+            Intellectual Tech. Real Business Growth.<br>
+            The end-to-end technology & AI partner for scaling businesses.
+          </p>
+          <div class="footer__contact-item">
+            <span>📍</span> Magarpatta, Hadapsar, Pune, Maharashtra, India
+          </div>
+          <div class="footer__contact-item">
+            <span>📧</span> <a href="mailto:info@medhavat.com">info@medhavat.com</a>
+          </div>
+          <div class="footer__contact-item">
+            <span>📞</span> <a href="tel:+917387853665">+91 73878 53665</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Navigation</h4>
+          <a href="./index.html" class="footer__link">Home</a>
+          <a href="./services.html" class="footer__link">Services</a>
+          <a href="./portfolio.html" class="footer__link">Portfolio</a>
+          <a href="./insights.html" class="footer__link">Insights</a>
+          <a href="./contact.html" class="footer__link">Contact</a>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Categories</h4>
+          <a href="#articles" class="footer__link">Case Studies</a>
+          <a href="#articles" class="footer__link">Engineering Guides</a>
+          <a href="#articles" class="footer__link">AI & RAG Systems</a>
+          <a href="#articles" class="footer__link">Company Updates</a>
+          <a href="./services.html" class="footer__link">All Services</a>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Direct Connect</h4>
+          <a href="https://wa.me/917387853665" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--sm" style="margin-bottom: var(--space-3); width: 100%;">
+            Chat on WhatsApp
+          </a>
+          <a href="./contact.html" class="btn btn--outline btn--sm" style="width: 100%;">
+            Schedule a Call
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div>© 2026 Medhavat. All rights reserved. Registered in Pune, India.</div>
+        <div class="footer__legal">
+          <a href="./contact.html">Privacy Policy</a>
+          <a href="./contact.html">Terms of Service</a>
+          <a href="./contact.html">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

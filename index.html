@@ -1,61 +1,437 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medhavat | Intelligent Software</title>
-    <link rel="stylesheet" href="./src/styles/tokens.css" />
-    <link rel="stylesheet" href="./src/styles/home.css" />
-  </head>
-  <body>
-    <header class="site-header" data-site-header></header>
-    <section class="hero" aria-label="Medhavat introduction">
-      <canvas id="scene-canvas"></canvas>
-      <div class="hero-copy">
-        <p class="hero-kicker">Medhavat</p>
-        <h1 class="hero-title">
-          Transforming Business Ambition into Intelligent Software.
-        </h1>
-        <p class="hero-subtitle">Intellectual Tech. Real Business Growth.</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & AEO Primary Metadata -->
+  <title>Medhavat — Intellectual Tech. Real Business Growth.</title>
+  <meta name="description" content="Medhavat delivers end-to-end digital transformation solutions — from custom web & mobile apps to bespoke AI tools, enterprise software, and growth strategies. Based in Pune, India.">
+  <meta name="keywords" content="Digital Transformation Partner, Custom Software Development Pune, AI Solutions India, Web App Development, Enterprise Automation, Medhavat">
+  <meta name="author" content="Medhavat">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://medhavat.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://medhavat.com/">
+  <meta property="og:title" content="Medhavat — Intellectual Tech. Real Business Growth.">
+  <meta property="og:description" content="Your complete digital transformation partner. Custom software, mobile apps, enterprise web platforms, and AI automation.">
+  <meta property="og:site_name" content="Medhavat">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medhavat — Intellectual Tech. Real Business Growth.">
+  <meta name="twitter:description" content="End-to-end technology and AI partner for scaling businesses across India and globally.">
+
+  <!-- Schema.org JSON-LD Structured Data for AI & Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://medhavat.com/#organization",
+        "name": "Medhavat",
+        "url": "https://medhavat.com",
+        "logo": "https://medhavat.com/assets/logo.png",
+        "tagline": "Intellectual Tech. Real Business Growth.",
+        "description": "The end-to-end technology & AI partner for scaling businesses.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Magarpatta, Hadapsar",
+          "addressLocality": "Pune",
+          "addressRegion": "Maharashtra",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91 73878 53665",
+          "contactType": "customer service",
+          "email": "info@medhavat.com",
+          "availableLanguage": ["English", "Hindi", "Marathi"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://medhavat.com/#website",
+        "url": "https://medhavat.com",
+        "name": "Medhavat",
+        "publisher": { "@id": "https://medhavat.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://medhavat.com/#webpage",
+        "url": "https://medhavat.com/",
+        "name": "Medhavat — Digital Transformation Partner",
+        "isPartOf": { "@id": "https://medhavat.com/#website" },
+        "about": { "@id": "https://medhavat.com/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Self-Hosted Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/cursor-wave.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+</head>
+<body data-page="home">
+
+  <!-- ── Header & Navigation ───────────────────────────────── -->
+  <header class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="./index.html" class="nav__logo" aria-label="Medhavat Home">
+        <div class="nav__logo-mark">
+          <img src="./assets/images/medhavat-logo.svg" alt="Medhavat Logo" width="24" height="21" style="filter: brightness(0) invert(1);" />
+        </div>
+        <div class="nav__logo-text">Medha<span>vat</span></div>
+      </a>
+
+      <nav class="nav__links" aria-label="Main Navigation">
+        <a href="./services.html" class="nav__link">Services</a>
+        <a href="./portfolio.html" class="nav__link">Portfolio</a>
+        <a href="./insights.html" class="nav__link">Insights</a>
+        <a href="./contact.html" class="nav__link">Contact</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a href="./contact.html" class="btn btn--primary btn--sm">Get Started</a>
       </div>
-    </section>
-    <section class="home-sections" aria-label="Medhavat capabilities">
-      <article class="home-section">
-        <h2>Your complete digital transformation partner</h2>
-        <p>
-          We do not just build. Every solution is custom-designed to drive
-          measurable business results through strategic planning, expert
-          execution, and continuous support.
+
+      <button class="nav__hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" aria-label="Mobile Navigation Menu">
+    <a href="./index.html" class="nav__link active">Home</a>
+    <a href="./services.html" class="nav__link">Services</a>
+    <a href="./portfolio.html" class="nav__link">Portfolio</a>
+    <a href="./insights.html" class="nav__link">Insights</a>
+    <a href="./contact.html" class="nav__link">Contact</a>
+    <a href="./contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4);">Get Started</a>
+  </div>
+
+  <main id="main-content">
+    <!-- ── Hero Stage (Cursor-Wave Interactive Background) ──── -->
+    <section class="cw-stage cw-stage--hero" id="hero">
+      <div class="container hero cw-content">
+        <div class="hero__badge" data-cursor-wave-mask>
+          <span class="dot"></span>
+          DIGITAL TRANSFORMATION PARTNER
+        </div>
+
+        <h1 class="hero__title" data-cursor-wave-mask>
+          Transforming Ideas Into<br>
+          <span class="gradient-text">Powerful Digital Solutions</span>
+        </h1>
+
+        <p class="hero__sub" data-cursor-wave-mask>
+          We don't just build — we transform. Every solution is custom-designed to drive measurable business results for scaling companies across India and beyond.
         </p>
-      </article>
-      <article class="home-section">
-        <h2>Built for ambitious industries</h2>
-        <p>
-          Healthcare, finance, retail, education, real estate, manufacturing,
-          hospitality, logistics, and media teams can move from idea to useful
-          software with one connected partner.
-        </p>
-        <div class="home-stat-row">
-          <div class="home-stat">
-            <strong>10+</strong><span>Projects delivered</span>
+
+        <div class="hero__actions" data-cursor-wave-mask>
+          <a href="./services.html" class="btn btn--primary btn--lg">Explore Our Services →</a>
+          <a href="./contact.html" class="btn btn--ghost btn--lg">Contact Us</a>
+        </div>
+
+        <!-- Trust Stats Bar -->
+        <div class="stats-bar" data-cursor-wave-mask>
+          <div class="stat">
+            <span class="stat__value" data-counter="10" data-suffix="+">10+</span>
+            <span class="stat__label">Projects Delivered</span>
           </div>
-          <div class="home-stat">
-            <strong>8+</strong><span>Years experience</span>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat__value" data-counter="8" data-suffix="+">8+</span>
+            <span class="stat__label">Years SME Experience</span>
           </div>
-          <div class="home-stat">
-            <strong>100%</strong><span>Client satisfaction</span>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat__value" data-counter="100" data-suffix="%">100%</span>
+            <span class="stat__label">Client Satisfaction</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat__value" data-counter="40" data-suffix="%+">40%+</span>
+            <span class="stat__label">Cost Reduction</span>
           </div>
         </div>
-      </article>
-      <article class="home-section">
-        <h2>A process designed to keep momentum</h2>
-        <p>
-          Discovery, planning, development, quality assurance, launch, and
-          ongoing optimization give every project a clear next move.
-        </p>
-      </article>
+      </div>
     </section>
-    <footer class="site-footer" data-site-footer></footer>
-    <script type="module" src="./src/home-entry.js"></script>
-  </body>
+
+    <!-- ── Core Pillars Section ──────────────────────────────── -->
+    <section class="section" id="pillars">
+      <div class="container">
+        <div class="section-header reveal" data-cursor-wave-mask>
+          <span class="section-header__eyebrow">Our Philosophy</span>
+          <h2 class="section-header__title">Your Complete Digital Transformation Partner</h2>
+          <p class="section-header__sub">
+            We don't just build — we transform. Every solution is custom-designed to drive measurable business outcomes.
+          </p>
+        </div>
+
+        <div class="pillar-grid">
+          <article class="pillar-card reveal" data-cursor-wave-mask>
+            <div class="pillar-card__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <h3 class="pillar-card__title">Strategic Planning</h3>
+            <p class="pillar-card__desc">
+              We understand your business goals, operational bottlenecks, and market dynamics before writing a single line of code.
+            </p>
+          </article>
+
+          <article class="pillar-card reveal" data-cursor-wave-mask>
+            <div class="pillar-card__icon">
+              <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3 class="pillar-card__title">Expert Execution</h3>
+            <p class="pillar-card__desc">
+              Our engineering team delivers premium quality software, high-speed architectures, and cutting-edge intelligence.
+            </p>
+          </article>
+
+          <article class="pillar-card reveal" data-cursor-wave-mask>
+            <div class="pillar-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <h3 class="pillar-card__title">Continuous Support</h3>
+            <p class="pillar-card__desc">
+              We stand with you post-launch, guaranteeing high uptime, security audits, and continuous performance optimization.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Industries Section ────────────────────────────────── -->
+    <section class="section section--sm" id="industries">
+      <div class="container">
+        <div class="section-header reveal" data-cursor-wave-mask>
+          <span class="section-header__eyebrow">Industry Expertise</span>
+          <h2 class="section-header__title">Trusted Across Industries</h2>
+          <p class="section-header__sub">
+            Our multi-disciplinary engineering spans critical enterprise domains. Whatever your sector, we build bespoke solutions.
+          </p>
+        </div>
+
+        <div class="industry-grid reveal" data-cursor-wave-mask>
+          <span class="industry-badge">Healthcare & HealthTech</span>
+          <span class="industry-badge">Finance & FinTech</span>
+          <span class="industry-badge">Retail & E-commerce</span>
+          <span class="industry-badge">Education & EdTech</span>
+          <span class="industry-badge">Real Estate & PropTech</span>
+          <span class="industry-badge">Manufacturing & Industrial</span>
+          <span class="industry-badge">Hospitality & Tourism</span>
+          <span class="industry-badge">Logistics & Supply Chain</span>
+          <span class="industry-badge">Media & Entertainment</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Why Choose Us ─────────────────────────────────────── -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-header reveal" data-cursor-wave-mask>
+          <span class="section-header__eyebrow">The Medhavat Advantage</span>
+          <h2 class="section-header__title">Why Medhavat Stands Out</h2>
+          <p class="section-header__sub">
+            Combining startup agility with enterprise rigor to accelerate your digital growth.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <h3 class="diff-card__title">End-to-End Solutions</h3>
+            <p class="diff-card__desc">From strategic roadmap and UI/UX design to full-stack engineering and cloud deployment, we manage everything under one roof.</p>
+          </div>
+
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L13 14h2a3 3 0 0 1 3 3v1a2 2 0 0 1-2 2h-1"/><path d="M12 2a4 4 0 0 0-4 4c0 1.95 1.4 3.58 3.25 3.93L11 14H9a3 3 0 0 0-3 3v1a2 2 0 0 0 2 2h1"/><circle cx="12" cy="17" r="2"/></svg>
+            </div>
+            <h3 class="diff-card__title">AI-Driven Approach</h3>
+            <p class="diff-card__desc">We leverage cutting-edge artificial intelligence, autonomous agents, and RAG architectures to optimize every system we build.</p>
+          </div>
+
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 class="diff-card__title">Affordable & Scalable</h3>
+            <p class="diff-card__desc">Premium engineering standards without enterprise-bloated price tags. Scale gracefully from MVP to millions of users.</p>
+          </div>
+
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+            </div>
+            <h3 class="diff-card__title">Fast Delivery</h3>
+            <p class="diff-card__desc">Agile sprints and transparent iterations ensure rapid time-to-market without ever compromising code craftsmanship.</p>
+          </div>
+
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 0 0 1.42 0l4.24-4.24a1 1 0 0 0 0-1.42l-2-2"/><path d="m13 7-2-2a1 1 0 0 0-1.42 0L5.34 9.24a1 1 0 0 0 0 1.42l2 2"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h3 class="diff-card__title">Dedicated Partnership</h3>
+            <p class="diff-card__desc">Your success is our reputation. Direct access to lead architects with 24/7 support and ongoing performance tuning.</p>
+          </div>
+
+          <div class="diff-card reveal" data-cursor-wave-mask>
+            <div class="diff-card__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </div>
+            <h3 class="diff-card__title">Proven Track Record</h3>
+            <p class="diff-card__desc">10+ high-impact solutions deployed across healthcare, finance, retail, and manufacturing with 100% client satisfaction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Development Process ───────────────────────────────── -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header reveal" data-cursor-wave-mask>
+          <span class="section-header__eyebrow">Methodology</span>
+          <h2 class="section-header__title">Our Proven Development Process</h2>
+          <p class="section-header__sub">
+            A structured 6-stage progressive delivery workflow ensuring clarity, velocity, and flawless execution.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step reveal reveal-delay-1" data-cursor-wave-mask>
+            <div class="process-step__number">01</div>
+            <h3 class="process-step__title">Discovery & Strategy</h3>
+            <p class="process-step__desc">Deep-dive workshop into your business model, customer workflows, competitive advantages, and technical requirements.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-2" data-cursor-wave-mask>
+            <div class="process-step__number">02</div>
+            <h3 class="process-step__title">Planning & Architecture</h3>
+            <p class="process-step__desc">System architecture diagrams, data schema modeling, interactive wireframes, and sprint roadmaps aligned with your KPIs.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-3" data-cursor-wave-mask>
+            <div class="process-step__number">03</div>
+            <h3 class="process-step__title">Engineering & Build</h3>
+            <p class="process-step__desc">Clean, modular code built on secure stacks with weekly demo milestones and test-driven development practices.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-1" data-cursor-wave-mask>
+            <div class="process-step__number">04</div>
+            <h3 class="process-step__title">Rigorous QA & Testing</h3>
+            <p class="process-step__desc">Automated unit suites, load testing, security vulnerability scans, and cross-browser/device validation.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-2" data-cursor-wave-mask>
+            <div class="process-step__number">05</div>
+            <h3 class="process-step__title">Launch & Deployment</h3>
+            <p class="process-step__desc">Zero-downtime CI/CD deployment, cloud environment provisioning, DNS routing, and complete documentation handover.</p>
+          </div>
+
+          <div class="process-step reveal reveal-delay-3" data-cursor-wave-mask>
+            <div class="process-step__number">06</div>
+            <h3 class="process-step__title">Growth & Support</h3>
+            <p class="process-step__desc">Continuous uptime monitoring, security patching, real-time analytics review, and ongoing feature enhancements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Call to Action Banner ─────────────────────────────── -->
+    <section class="section section--sm" id="cta">
+      <div class="container">
+        <div class="cta-banner reveal" data-cursor-wave-mask>
+          <h2 class="cta-banner__title">Ready to Transform Your Business?</h2>
+          <p class="cta-banner__sub">
+            Whether you need a full enterprise rebuild, a bespoke AI solution, or a high-converting web platform — we are ready to build with you.
+          </p>
+          <div class="cta-banner__actions">
+            <a href="./services.html" class="btn btn--primary btn--lg">View All Services →</a>
+            <a href="./contact.html" class="btn btn--outline btn--lg">Book Free Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__logo">
+            <div class="nav__logo-mark">
+              <img src="./assets/images/medhavat-logo.svg" alt="Medhavat Logo" width="24" height="21" style="filter: brightness(0) invert(1);" />
+            </div>
+            <div class="nav__logo-text">Medha<span>vat</span></div>
+          </div>
+          <p class="footer__tagline">
+            Intellectual Tech. Real Business Growth.<br>
+            The end-to-end technology & AI partner for scaling businesses.
+          </p>
+          <div class="footer__contact-item">
+            <span>📍</span> Magarpatta, Hadapsar, Pune, Maharashtra, India
+          </div>
+          <div class="footer__contact-item">
+            <span>📧</span> <a href="mailto:info@medhavat.com">info@medhavat.com</a>
+          </div>
+          <div class="footer__contact-item">
+            <span>📞</span> <a href="tel:+917387853665">+91 73878 53665</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Navigation</h4>
+          <a href="./index.html" class="footer__link">Home</a>
+          <a href="./services.html" class="footer__link">Services</a>
+          <a href="./portfolio.html" class="footer__link">Portfolio</a>
+          <a href="./insights.html" class="footer__link">Insights</a>
+          <a href="./contact.html" class="footer__link">Contact</a>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Solutions</h4>
+          <a href="./services.html" class="footer__link">Web Platforms</a>
+          <a href="./services.html" class="footer__link">Custom Software</a>
+          <a href="./services.html" class="footer__link">Mobile Apps</a>
+          <a href="./ai-services.html" class="footer__link">AI & Automation</a>
+          <a href="./services.html" class="footer__link">E-commerce</a>
+        </div>
+
+        <div>
+          <h4 class="footer__col-title">Direct Connect</h4>
+          <a href="https://wa.me/917387853665" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--sm" style="margin-bottom: var(--space-3); width: 100%;">
+            Chat on WhatsApp
+          </a>
+          <a href="./contact.html" class="btn btn--outline btn--sm" style="width: 100%;">
+            Schedule a Call
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div>© 2026 Medhavat. All rights reserved. Registered in Pune, India.</div>
+        <div class="footer__legal">
+          <a href="./contact.html">Privacy Policy</a>
+          <a href="./contact.html">Terms of Service</a>
+          <a href="./contact.html">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
 </html>

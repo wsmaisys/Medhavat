@@ -1,0 +1,154 @@
+/* =========================================================
+   tokens.css — Medhavat Design System Tokens
+   High-Craft Typography · Enterprise Layout Tokens · Refined Palette
+   ========================================================= */
+
+/* Self-hosted Fonts */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/PlusJakartaSans-Regular.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('../fonts/PlusJakartaSans-ExtraBold.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Inter-Regular.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Inter-Medium.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ── Color & Glass Tokens ─────────────────────────────────── */
+:root {
+  /* Core Canvas & Dark Backgrounds */
+  --clr-bg-base:      #07090e;
+  --clr-bg-surface:   #0b0f19;
+  --clr-bg-elevated:  #111827;
+
+  /* Sophisticated Dark Glassmorphism */
+  --glass-bg:         rgba(11, 15, 25, 0.65);
+  --glass-bg-hover:   rgba(16, 22, 36, 0.8);
+  --glass-border:     rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(0, 210, 255, 0.3);
+  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.4);
+
+  /* Precise Brand Accents */
+  --clr-cyan:         #00d2ff;
+  --clr-violet:       #6366f1;
+  --clr-green:        #10b981;
+  --clr-pink:         #ec4899;
+  --clr-amber:        #f59e0b;
+
+  /* Accent Dims */
+  --clr-cyan-dim:     rgba(0, 210, 255, 0.08);
+  --clr-violet-dim:   rgba(99, 102, 241, 0.08);
+  --clr-green-dim:    rgba(16, 185, 129, 0.08);
+
+  /* High-Contrast Typography Colors */
+  --clr-text-primary:   #ffffff;
+  --clr-text-secondary: #94a3b8;
+  --clr-text-light:     #e2e8f0;
+  --clr-text-muted:     #64748b;
+
+  /* Borders */
+  --clr-border:       rgba(255, 255, 255, 0.08);
+  --clr-border-glow:  rgba(0, 210, 255, 0.22);
+
+  /* Gradients */
+  --grad-cyan-violet: linear-gradient(135deg, #00d2ff 0%, #38bdf8 100%);
+  --grad-green-cyan:  linear-gradient(135deg, #10b981 0%, #00d2ff 100%);
+  --grad-hero:        linear-gradient(135deg, #ffffff 15%, #38bdf8 65%, #00d2ff 100%);
+
+  /* ── Typography Tokens ──────────────────────────────────── */
+  --font-display:  'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Typographic Scales */
+  --text-xs:    0.75rem;     /* 12px */
+  --text-sm:    0.875rem;    /* 14px */
+  --text-base:  1rem;        /* 16px */
+  --text-lg:    1.125rem;    /* 18px */
+  --text-xl:    1.25rem;     /* 20px */
+  --text-2xl:   1.5rem;      /* 24px */
+  --text-3xl:   2.25rem;     /* 36px */
+  --text-4xl:   3.25rem;     /* 52px */
+
+  /* ── Spacing Tokens ─────────────────────────────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+
+  /* ── Border Radius ──────────────────────────────────────── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Layout ─────────────────────────────────────────────── */
+  --container-max:  1160px;
+  --section-px:     1.5rem;
+  --nav-height:     72px;
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-mid:  250ms;
+}
