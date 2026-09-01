@@ -1,0 +1,476 @@
+/* =========================================================
+   theme-hud.css — High-Craft Floating Theme Switcher HUD
+   2×2 Matrix: (Day/Night) × (Coloured/Greyscale)
+   ========================================================= */
+
+/* ── Cinematic Theme Transition on Root Elements ─────────── */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.85s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Quantum Theme Shift Shimmer Pulse */
+html.theme-transitioning::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  background: radial-gradient(circle at bottom right, var(--hud-accent-glow) 0%, transparent 65%);
+  opacity: 0.8;
+  animation: hud-quantum-shimmer 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes hud-quantum-shimmer {
+  0%   { opacity: 0; transform: scale(0.6); }
+  35%  { opacity: 0.7; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* ── HUD Trigger Wrapper ─────────────────────────────────── */
+.theme-hud__wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  pointer-events: none;
+}
+
+/* ── Floating Trigger Button ─────────────────────────────── */
+.theme-hud__trigger {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--hud-trigger-border);
+  background: var(--hud-trigger-bg);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 20px var(--hud-accent-glow);
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.theme-hud__trigger:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: var(--hud-accent);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    0 0 24px var(--hud-accent-glow);
+}
+
+.theme-hud__trigger:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Trigger Icon & Orbit Effect */
+.theme-hud__icon-orb {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--hud-tile-bg);
+  border: 1px solid var(--hud-tile-border);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.theme-hud__trigger:hover .theme-hud__icon-orb {
+  transform: rotate(45deg);
+}
+
+.theme-hud__trigger.open .theme-hud__icon-orb {
+  transform: rotate(90deg);
+}
+
+.theme-hud__icon-orb svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--hud-accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Trigger Label & Status Pill */
+.theme-hud__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--clr-text-primary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.theme-hud__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hud-accent);
+  box-shadow: 0 0 8px var(--hud-accent);
+  animation: hud-pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes hud-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── HUD Panel Container ─────────────────────────────────── */
+.theme-hud__panel {
+  pointer-events: auto;
+  position: absolute;
+  bottom: 58px;
+  right: 0;
+  width: 320px;
+  padding: 16px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--hud-panel-border);
+  background: var(--hud-panel-bg);
+  backdrop-filter: blur(28px) saturate(1.5);
+  -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 40px var(--hud-accent-glow);
+
+  /* Hidden State */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.94);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.25s,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-hud__panel.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* ── HUD Header ──────────────────────────────────────────── */
+.theme-hud__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.theme-hud__header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-hud__header-title-text {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-text-primary);
+}
+
+.theme-hud__header-badge {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: var(--clr-cyan-dim);
+  color: var(--hud-accent);
+  border: 1px solid var(--hud-accent);
+  text-transform: uppercase;
+}
+
+.theme-hud__close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 1;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.theme-hud__close-btn:hover {
+  background: var(--clr-cyan-dim);
+  color: var(--clr-text-primary);
+  border-color: var(--clr-border);
+}
+
+/* ── Matrix Grid Structure ───────────────────────────────── */
+.theme-hud__matrix-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Top Column Headers */
+.theme-hud__matrix-cols {
+  display: grid;
+  grid-template-columns: 44px 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-hud__col-header {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Matrix Row */
+.theme-hud__matrix-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 1fr;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.theme-hud__row-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 4px 0;
+}
+
+.theme-hud__row-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.theme-hud__row-title {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+/* ── Interactive Swatch Cards ────────────────────────────── */
+.theme-hud__tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--hud-tile-border);
+  background: var(--hud-tile-bg);
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-hud__tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--hud-accent);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 12px var(--hud-accent-glow);
+}
+
+.theme-hud__tile:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Active Tile State */
+.theme-hud__tile.active {
+  border-color: var(--hud-accent);
+  background: var(--hud-tile-bg);
+  box-shadow:
+    0 0 0 1px var(--hud-accent),
+    0 8px 24px var(--hud-accent-glow);
+}
+
+.theme-hud__tile.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, var(--hud-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Mini Palette Preview Bar */
+.theme-hud__palette-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-hud__palette-bar span {
+  flex: 1;
+  height: 100%;
+}
+
+/* Tile Titles */
+.theme-hud__tile-title {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--clr-text-primary);
+  line-height: 1.2;
+}
+
+.theme-hud__tile-sub {
+  font-family: var(--font-body);
+  font-size: 9px;
+  color: var(--clr-text-muted);
+  margin-top: 1px;
+}
+
+/* Active Check Indicator */
+.theme-hud__tile-check {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--hud-accent);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+
+.theme-hud__tile.active .theme-hud__tile-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── HUD Footer Status Bar ───────────────────────────────── */
+.theme-hud__footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 9px;
+  color: var(--clr-text-muted);
+}
+
+.theme-hud__footer-mode {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-hud__footer-mode span {
+  color: var(--hud-accent);
+  font-weight: 700;
+}
+
+.theme-hud__footer-pill {
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  background: var(--clr-cyan-dim);
+  color: var(--clr-text-secondary);
+  font-weight: 600;
+}
+
+/* ── Responsive Mobile HUD ───────────────────────────────── */
+@media (max-width: 480px) {
+  .theme-hud__wrapper {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .theme-hud__trigger {
+    padding: 6px 12px 6px 10px;
+  }
+
+  .theme-hud__label {
+    font-size: 11px;
+  }
+
+  .theme-hud__panel {
+    bottom: 50px;
+    right: 0;
+    width: 290px;
+    padding: 14px;
+  }
+
+  .theme-hud__tile {
+    padding: 7px 8px;
+  }
+
+  .theme-hud__tile-title {
+    font-size: 10px;
+  }
+}

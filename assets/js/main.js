@@ -3,15 +3,34 @@
  * Full-Page Binary Greyscale CursorWave & Interactive Features
  */
 import { CursorWave } from './cursor-wave.js';
+import { initThemeHud, THEME_CW_COLORS, THEME_CW_BG } from './theme-hud.js';
+import { initCookieConsent } from './cookie-consent.js';
+
+/** @type {CursorWave|null} */
+let cursorWaveInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-  initGlobalCursorWave();
+  initThemeHud();          // Apply saved theme + mount HUD
+  initCookieConsent();     // GDPR Cookie & Retention Modal
+  initGlobalCursorWave();  // CursorWave uses current theme colors
   initNavbar();
   initMobileMenu();
   initScrollReveal();
   initCounters();
   initContactForm();
   initFilterTabs();
+
+  // Listen for dynamic theme changes to update CursorWave
+  window.addEventListener('themechange', (e) => {
+    if (cursorWaveInstance && e.detail) {
+      cursorWaveInstance.updateColors(
+        e.detail.colors,
+        e.detail.backgroundColor,
+        e.detail.originX,
+        e.detail.originY
+      );
+    }
+  });
 });
 
 /* ── Full-Page Global Binary CursorWave ────────────────────── */
@@ -23,19 +42,16 @@ function initGlobalCursorWave() {
     document.body.prepend(container);
   }
 
+  // Get current theme colors
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'night-grey';
+  const cwColors = THEME_CW_COLORS[currentTheme] || THEME_CW_COLORS['night-grey'];
+  const cwBg = THEME_CW_BG[currentTheme] || THEME_CW_BG['night-grey'];
+
   try {
-    new CursorWave(container, {
+    cursorWaveInstance = new CursorWave(container, {
       shapes: ['0', '1'],
-      colors: [
-        '#ffffff',
-        '#f8fafc',
-        '#e2e8f0',
-        '#cbd5e1',
-        '#94a3b8',
-        '#64748b',
-        '#475569',
-        '#334155'
-      ],
+      colors: cwColors,
+      backgroundColor: cwBg,
       cellSize: window.innerWidth < 768 ? 36 : 42,
       idleScale: 0.16,
       influenceRadiusVmin: window.innerWidth < 768 ? 44 : 36

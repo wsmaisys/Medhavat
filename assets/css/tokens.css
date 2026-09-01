@@ -65,47 +65,8 @@
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* ── Color & Glass Tokens ─────────────────────────────────── */
+/* ── Shared Non-Color Tokens ─────────────────────────────── */
 :root {
-  /* Core Canvas & Dark Backgrounds */
-  --clr-bg-base:      #07090e;
-  --clr-bg-surface:   #0b0f19;
-  --clr-bg-elevated:  #111827;
-
-  /* Sophisticated Dark Glassmorphism */
-  --glass-bg:         rgba(11, 15, 25, 0.65);
-  --glass-bg-hover:   rgba(16, 22, 36, 0.8);
-  --glass-border:     rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(0, 210, 255, 0.3);
-  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.4);
-
-  /* Precise Brand Accents */
-  --clr-cyan:         #00d2ff;
-  --clr-violet:       #6366f1;
-  --clr-green:        #10b981;
-  --clr-pink:         #ec4899;
-  --clr-amber:        #f59e0b;
-
-  /* Accent Dims */
-  --clr-cyan-dim:     rgba(0, 210, 255, 0.08);
-  --clr-violet-dim:   rgba(99, 102, 241, 0.08);
-  --clr-green-dim:    rgba(16, 185, 129, 0.08);
-
-  /* High-Contrast Typography Colors */
-  --clr-text-primary:   #ffffff;
-  --clr-text-secondary: #94a3b8;
-  --clr-text-light:     #e2e8f0;
-  --clr-text-muted:     #64748b;
-
-  /* Borders */
-  --clr-border:       rgba(255, 255, 255, 0.08);
-  --clr-border-glow:  rgba(0, 210, 255, 0.22);
-
-  /* Gradients */
-  --grad-cyan-violet: linear-gradient(135deg, #00d2ff 0%, #38bdf8 100%);
-  --grad-green-cyan:  linear-gradient(135deg, #10b981 0%, #00d2ff 100%);
-  --grad-hero:        linear-gradient(135deg, #ffffff 15%, #38bdf8 65%, #00d2ff 100%);
-
   /* ── Typography Tokens ──────────────────────────────────── */
   --font-display:  'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -151,4 +112,320 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
   --duration-mid:  250ms;
+}
+
+/* ==========================================================
+   THEME 1 — Night + Greyscale (DEFAULT — Original Design)
+   ========================================================== */
+:root,
+[data-theme="night-grey"] {
+  --clr-bg-base:      #07090e;
+  --clr-bg-surface:   #0b0f19;
+  --clr-bg-elevated:  #111827;
+
+  --glass-bg:         rgba(11, 15, 25, 0.65);
+  --glass-bg-hover:   rgba(16, 22, 36, 0.8);
+  --glass-border:     rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(148, 163, 184, 0.35);
+  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.4);
+
+  /* Nav Header */
+  --nav-bg:           rgba(7, 9, 14, 0.75);
+  --nav-bg-scrolled:  rgba(11, 15, 25, 0.88);
+  --nav-border:       rgba(255, 255, 255, 0.08);
+
+  --clr-cyan:         #94a3b8;
+  --clr-violet:       #64748b;
+  --clr-green:        #94a3b8;
+  --clr-pink:         #94a3b8;
+  --clr-amber:        #94a3b8;
+
+  --clr-cyan-dim:     rgba(148, 163, 184, 0.08);
+  --clr-violet-dim:   rgba(100, 116, 139, 0.08);
+  --clr-green-dim:    rgba(148, 163, 184, 0.08);
+
+  --clr-text-primary:   #ffffff;
+  --clr-text-secondary: #94a3b8;
+  --clr-text-light:     #e2e8f0;
+  --clr-text-muted:     #64748b;
+
+  --clr-border:       rgba(255, 255, 255, 0.08);
+  --clr-border-glow:  rgba(148, 163, 184, 0.22);
+
+  --grad-cyan-violet: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  --grad-green-cyan:  linear-gradient(135deg, #94a3b8 0%, #e2e8f0 100%);
+  --grad-hero:        linear-gradient(135deg, #ffffff 15%, #cbd5e1 65%, #94a3b8 100%);
+
+  /* Button overrides for greyscale */
+  --btn-primary-bg:     linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  --btn-primary-hover:  linear-gradient(135deg, #cbd5e1 0%, #475569 100%);
+  --btn-primary-glow:   rgba(148, 163, 184, 0.25);
+  --btn-primary-glow-hover: rgba(148, 163, 184, 0.45);
+  --btn-ghost-hover-border: rgba(148, 163, 184, 0.5);
+  --btn-ghost-hover-bg: rgba(148, 163, 184, 0.1);
+  --btn-ghost-hover-glow: rgba(148, 163, 184, 0.15);
+  --btn-outline-bg:    rgba(148, 163, 184, 0.05);
+  --btn-outline-border: rgba(148, 163, 184, 0.4);
+  --btn-outline-hover-bg: rgba(148, 163, 184, 0.15);
+  --btn-outline-hover-glow: rgba(148, 163, 184, 0.2);
+
+  /* Card hover glow */
+  --card-hover-glow:   rgba(148, 163, 184, 0.1);
+
+  /* Icon pods */
+  --icon-bg:           rgba(148, 163, 184, 0.08);
+  --icon-border:       rgba(148, 163, 184, 0.2);
+
+  /* CTA banner */
+  --cta-bg:            linear-gradient(135deg, rgba(9, 13, 24, 0.85) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(100, 116, 139, 0.12) 100%);
+
+  /* Form focus */
+  --form-focus-glow:   rgba(148, 163, 184, 0.15);
+
+  /* Maps filter */
+  --maps-filter:       invert(0.92) hue-rotate(195deg) saturate(0.85) contrast(1.1);
+
+  /* Portfolio tag */
+  --tag-bg:            rgba(148, 163, 184, 0.1);
+
+  /* HUD Specific */
+  --hud-trigger-bg:    rgba(15, 23, 42, 0.75);
+  --hud-trigger-border: rgba(148, 163, 184, 0.25);
+  --hud-panel-bg:      rgba(11, 15, 25, 0.85);
+  --hud-panel-border:  rgba(255, 255, 255, 0.12);
+  --hud-tile-bg:       rgba(17, 24, 39, 0.7);
+  --hud-tile-border:   rgba(255, 255, 255, 0.08);
+  --hud-accent:        #94a3b8;
+  --hud-accent-glow:   rgba(148, 163, 184, 0.35);
+}
+
+/* ==========================================================
+   THEME 2 — Night + Coloured (Eco-Data Palette on Dark)
+   ========================================================== */
+[data-theme="night-colour"] {
+  --clr-bg-base:      #07090e;
+  --clr-bg-surface:   #0b0f19;
+  --clr-bg-elevated:  #111827;
+
+  --glass-bg:         rgba(11, 15, 25, 0.65);
+  --glass-bg-hover:   rgba(16, 22, 36, 0.8);
+  --glass-border:     rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(20, 184, 166, 0.35);
+  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.4);
+
+  /* Nav Header */
+  --nav-bg:           rgba(7, 9, 14, 0.75);
+  --nav-bg-scrolled:  rgba(11, 15, 25, 0.88);
+  --nav-border:       rgba(20, 184, 166, 0.15);
+
+  --clr-cyan:         #14B8A6;
+  --clr-violet:       #1B3863;
+  --clr-green:        #4ADE80;
+  --clr-pink:         #155E75;
+  --clr-amber:        #0D9488;
+
+  --clr-cyan-dim:     rgba(20, 184, 166, 0.08);
+  --clr-violet-dim:   rgba(27, 56, 99, 0.08);
+  --clr-green-dim:    rgba(74, 222, 128, 0.08);
+
+  --clr-text-primary:   #ffffff;
+  --clr-text-secondary: #94a3b8;
+  --clr-text-light:     #e2e8f0;
+  --clr-text-muted:     #64748b;
+
+  --clr-border:       rgba(255, 255, 255, 0.08);
+  --clr-border-glow:  rgba(20, 184, 166, 0.22);
+
+  --grad-cyan-violet: linear-gradient(135deg, #14B8A6 0%, #4ADE80 100%);
+  --grad-green-cyan:  linear-gradient(135deg, #4ADE80 0%, #0D9488 100%);
+  --grad-hero:        linear-gradient(135deg, #ffffff 15%, #14B8A6 65%, #4ADE80 100%);
+
+  --btn-primary-bg:     linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+  --btn-primary-hover:  linear-gradient(135deg, #4ADE80 0%, #155E75 100%);
+  --btn-primary-glow:   rgba(20, 184, 166, 0.25);
+  --btn-primary-glow-hover: rgba(20, 184, 166, 0.45);
+  --btn-ghost-hover-border: rgba(20, 184, 166, 0.5);
+  --btn-ghost-hover-bg: rgba(20, 184, 166, 0.1);
+  --btn-ghost-hover-glow: rgba(20, 184, 166, 0.15);
+  --btn-outline-bg:    rgba(20, 184, 166, 0.05);
+  --btn-outline-border: rgba(20, 184, 166, 0.4);
+  --btn-outline-hover-bg: rgba(20, 184, 166, 0.15);
+  --btn-outline-hover-glow: rgba(20, 184, 166, 0.2);
+
+  --card-hover-glow:   rgba(20, 184, 166, 0.1);
+
+  --icon-bg:           rgba(20, 184, 166, 0.08);
+  --icon-border:       rgba(20, 184, 166, 0.2);
+
+  --cta-bg:            linear-gradient(135deg, rgba(9, 13, 24, 0.85) 0%, rgba(15, 23, 42, 0.9) 50%, rgba(20, 184, 166, 0.12) 100%);
+
+  --form-focus-glow:   rgba(20, 184, 166, 0.15);
+
+  --maps-filter:       invert(0.92) hue-rotate(135deg) saturate(0.85) contrast(1.1);
+
+  --tag-bg:            rgba(20, 184, 166, 0.1);
+
+  /* HUD Specific */
+  --hud-trigger-bg:    rgba(15, 23, 42, 0.75);
+  --hud-trigger-border: rgba(20, 184, 166, 0.35);
+  --hud-panel-bg:      rgba(11, 15, 25, 0.88);
+  --hud-panel-border:  rgba(20, 184, 166, 0.25);
+  --hud-tile-bg:       rgba(17, 24, 39, 0.7);
+  --hud-tile-border:   rgba(255, 255, 255, 0.08);
+  --hud-accent:        #14B8A6;
+  --hud-accent-glow:   rgba(20, 184, 166, 0.4);
+}
+
+/* ==========================================================
+   THEME 3 — Day + Coloured (Light Canvas + Eco-Data)
+   ========================================================== */
+[data-theme="day-colour"] {
+  --clr-bg-base:      #f8fafc;
+  --clr-bg-surface:   #ffffff;
+  --clr-bg-elevated:  #f1f5f9;
+
+  --glass-bg:         rgba(255, 255, 255, 0.75);
+  --glass-bg-hover:   rgba(255, 255, 255, 0.9);
+  --glass-border:     rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(20, 184, 166, 0.4);
+  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.08);
+
+  /* Nav Header (Light Day Theme) */
+  --nav-bg:           rgba(248, 250, 252, 0.82);
+  --nav-bg-scrolled:  rgba(255, 255, 255, 0.94);
+  --nav-border:       rgba(0, 0, 0, 0.08);
+
+  --clr-cyan:         #0D9488;
+  --clr-violet:       #1B3863;
+  --clr-green:        #16a34a;
+  --clr-pink:         #155E75;
+  --clr-amber:        #0D9488;
+
+  --clr-cyan-dim:     rgba(13, 148, 136, 0.08);
+  --clr-violet-dim:   rgba(27, 56, 99, 0.08);
+  --clr-green-dim:    rgba(22, 163, 74, 0.08);
+
+  --clr-text-primary:   #1e293b;
+  --clr-text-secondary: #475569;
+  --clr-text-light:     #334155;
+  --clr-text-muted:     #94a3b8;
+
+  --clr-border:       rgba(0, 0, 0, 0.08);
+  --clr-border-glow:  rgba(20, 184, 166, 0.25);
+
+  --grad-cyan-violet: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+  --grad-green-cyan:  linear-gradient(135deg, #4ADE80 0%, #0D9488 100%);
+  --grad-hero:        linear-gradient(135deg, #1B3863 15%, #0D9488 65%, #14B8A6 100%);
+
+  --btn-primary-bg:     linear-gradient(135deg, #0D9488 0%, #155E75 100%);
+  --btn-primary-hover:  linear-gradient(135deg, #14B8A6 0%, #1B3863 100%);
+  --btn-primary-glow:   rgba(13, 148, 136, 0.25);
+  --btn-primary-glow-hover: rgba(13, 148, 136, 0.4);
+  --btn-ghost-hover-border: rgba(13, 148, 136, 0.5);
+  --btn-ghost-hover-bg: rgba(13, 148, 136, 0.08);
+  --btn-ghost-hover-glow: rgba(13, 148, 136, 0.12);
+  --btn-outline-bg:    rgba(13, 148, 136, 0.05);
+  --btn-outline-border: rgba(13, 148, 136, 0.4);
+  --btn-outline-hover-bg: rgba(13, 148, 136, 0.12);
+  --btn-outline-hover-glow: rgba(13, 148, 136, 0.18);
+
+  --card-hover-glow:   rgba(13, 148, 136, 0.08);
+
+  --icon-bg:           rgba(13, 148, 136, 0.08);
+  --icon-border:       rgba(13, 148, 136, 0.2);
+
+  --cta-bg:            linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.95) 50%, rgba(13, 148, 136, 0.1) 100%);
+
+  --form-focus-glow:   rgba(13, 148, 136, 0.15);
+
+  --maps-filter:       saturate(1.1) contrast(1.05);
+
+  --tag-bg:            rgba(13, 148, 136, 0.1);
+
+  /* HUD Specific */
+  --hud-trigger-bg:    rgba(255, 255, 255, 0.85);
+  --hud-trigger-border: rgba(13, 148, 136, 0.3);
+  --hud-panel-bg:      rgba(255, 255, 255, 0.92);
+  --hud-panel-border:  rgba(13, 148, 136, 0.25);
+  --hud-tile-bg:       rgba(241, 245, 249, 0.85);
+  --hud-tile-border:   rgba(0, 0, 0, 0.08);
+  --hud-accent:        #0D9488;
+  --hud-accent-glow:   rgba(13, 148, 136, 0.3);
+}
+
+/* ==========================================================
+   THEME 4 — Day + Greyscale (Light Canvas + Grey Tones)
+   ========================================================== */
+[data-theme="day-grey"] {
+  --clr-bg-base:      #f8fafc;
+  --clr-bg-surface:   #ffffff;
+  --clr-bg-elevated:  #f1f5f9;
+
+  --glass-bg:         rgba(255, 255, 255, 0.75);
+  --glass-bg-hover:   rgba(255, 255, 255, 0.9);
+  --glass-border:     rgba(0, 0, 0, 0.08);
+  --glass-border-hover: rgba(100, 116, 139, 0.3);
+  --glass-shadow:     0 12px 36px rgba(0, 0, 0, 0.06);
+
+  /* Nav Header (Light Day Theme) */
+  --nav-bg:           rgba(248, 250, 252, 0.82);
+  --nav-bg-scrolled:  rgba(255, 255, 255, 0.94);
+  --nav-border:       rgba(0, 0, 0, 0.08);
+
+  --clr-cyan:         #475569;
+  --clr-violet:       #64748b;
+  --clr-green:        #475569;
+  --clr-pink:         #64748b;
+  --clr-amber:        #475569;
+
+  --clr-cyan-dim:     rgba(71, 85, 105, 0.08);
+  --clr-violet-dim:   rgba(100, 116, 139, 0.08);
+  --clr-green-dim:    rgba(71, 85, 105, 0.08);
+
+  --clr-text-primary:   #1e293b;
+  --clr-text-secondary: #475569;
+  --clr-text-light:     #334155;
+  --clr-text-muted:     #94a3b8;
+
+  --clr-border:       rgba(0, 0, 0, 0.08);
+  --clr-border-glow:  rgba(71, 85, 105, 0.2);
+
+  --grad-cyan-violet: linear-gradient(135deg, #475569 0%, #334155 100%);
+  --grad-green-cyan:  linear-gradient(135deg, #64748b 0%, #475569 100%);
+  --grad-hero:        linear-gradient(135deg, #1e293b 15%, #475569 65%, #64748b 100%);
+
+  --btn-primary-bg:     linear-gradient(135deg, #475569 0%, #334155 100%);
+  --btn-primary-hover:  linear-gradient(135deg, #64748b 0%, #1e293b 100%);
+  --btn-primary-glow:   rgba(71, 85, 105, 0.2);
+  --btn-primary-glow-hover: rgba(71, 85, 105, 0.35);
+  --btn-ghost-hover-border: rgba(71, 85, 105, 0.4);
+  --btn-ghost-hover-bg: rgba(71, 85, 105, 0.08);
+  --btn-ghost-hover-glow: rgba(71, 85, 105, 0.1);
+  --btn-outline-bg:    rgba(71, 85, 105, 0.05);
+  --btn-outline-border: rgba(71, 85, 105, 0.35);
+  --btn-outline-hover-bg: rgba(71, 85, 105, 0.12);
+  --btn-outline-hover-glow: rgba(71, 85, 105, 0.15);
+
+  --card-hover-glow:   rgba(71, 85, 105, 0.06);
+
+  --icon-bg:           rgba(71, 85, 105, 0.08);
+  --icon-border:       rgba(71, 85, 105, 0.18);
+
+  --cta-bg:            linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.95) 50%, rgba(71, 85, 105, 0.08) 100%);
+
+  --form-focus-glow:   rgba(71, 85, 105, 0.12);
+
+  --maps-filter:       saturate(0) contrast(1.05);
+
+  --tag-bg:            rgba(71, 85, 105, 0.08);
+
+  /* HUD Specific */
+  --hud-trigger-bg:    rgba(255, 255, 255, 0.85);
+  --hud-trigger-border: rgba(100, 116, 139, 0.25);
+  --hud-panel-bg:      rgba(255, 255, 255, 0.92);
+  --hud-panel-border:  rgba(100, 116, 139, 0.2);
+  --hud-tile-bg:       rgba(241, 245, 249, 0.85);
+  --hud-tile-border:   rgba(0, 0, 0, 0.08);
+  --hud-accent:        #475569;
+  --hud-accent-glow:   rgba(71, 85, 105, 0.25);
 }

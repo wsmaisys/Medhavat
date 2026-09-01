@@ -13,7 +13,9 @@ export default defineConfig({
         aiServices: resolve(__dirname, 'ai-services.html'),
         portfolio: resolve(__dirname, 'portfolio.html'),
         insights: resolve(__dirname, 'insights.html'),
-        contact: resolve(__dirname, 'contact.html')
+        contact: resolve(__dirname, 'contact.html'),
+        privacyPolicy: resolve(__dirname, 'privacy-policy.html'),
+        terms: resolve(__dirname, 'terms.html')
       }
     }
   },

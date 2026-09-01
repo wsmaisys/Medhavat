@@ -1,8 +1,47 @@
 /**
  * CursorWave Engine - Zero Dependency Binary Matrix Interactive Canvas
- * Features: Full-page fixed viewport, binary 0 and 1 greyscale theme,
- * pointer swell, click shockwaves, and content masking.
+ * Features: Full-page fixed viewport, binary 0 and 1 theme,
+ * pointer swell, click shockwaves, content masking, and smooth 900ms color interpolation.
  */
+
+// Helper: Parse any color string (#hex or rgba) into numeric RGBA
+function parseColor(str) {
+  if (!str) return { r: 7, g: 9, b: 14, a: 1 };
+  const s = str.trim();
+  if (s.startsWith('#')) {
+    let hex = s.slice(1);
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    const num = parseInt(hex, 16);
+    return {
+      r: (num >> 16) & 255,
+      g: (num >> 8) & 255,
+      b: num & 255,
+      a: 1
+    };
+  }
+  if (s.startsWith('rgb')) {
+    const match = s.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    if (match) {
+      return {
+        r: parseInt(match[1], 10),
+        g: parseInt(match[2], 10),
+        b: parseInt(match[3], 10),
+        a: match[4] !== undefined ? parseFloat(match[4]) : 1
+      };
+    }
+  }
+  return { r: 100, g: 116, b: 139, a: 1 };
+}
+
+// Helper: Lerp between two parsed color objects
+function lerpColor(c1, c2, t) {
+  const r = Math.round(c1.r + (c2.r - c1.r) * t);
+  const g = Math.round(c1.g + (c2.g - c1.g) * t);
+  const b = Math.round(c1.b + (c2.b - c1.b) * t);
+  const a = +(c1.a + (c2.a - c1.a) * t).toFixed(3);
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
 export class CursorWave {
   constructor(container, options = {}) {
     if (!container) {
@@ -11,7 +50,7 @@ export class CursorWave {
     this.container = typeof container === 'string' ? document.querySelector(container) : container;
     if (!this.container) return;
     
-    // Default Binary Greyscale Options
+    // Default Binary Options
     this.options = {
       cellSize: 46,                   // Pixel spacing between digits
       influenceRadiusVmin: 34,        // Cursor influence radius as % of min(width, height)
@@ -26,7 +65,7 @@ export class CursorWave {
       opacity: 1.0,                   // Master canvas opacity
       dpr: Math.min(window.devicePixelRatio || 1, 2),
       shapes: ['0', '1'],             // Binary theme exclusively 0 and 1
-      colors: [                       // Calibrated soft greyscale palette
+      colors: [                       // Calibrated soft palette
         '#64748b',
         '#94a3b8',
         '#cbd5e1',
@@ -54,6 +93,14 @@ export class CursorWave {
     this.rafId = null;
     this.resizeObserver = null;
     this.maskFrameCounter = 0;
+
+    // Color Interpolation State
+    this.currentBgColorObj = parseColor(this.options.backgroundColor);
+    this.startBgColorObj = { ...this.currentBgColorObj };
+    this.targetBgColorObj = { ...this.currentBgColorObj };
+    this.currentBgColorStr = this.options.backgroundColor;
+    this.colorTransitionStart = 0;
+    this.colorTransitionDuration = 900; // 900ms smooth gradual color morph
 
     // Event Bindings
     this.handlePointerMove = this.handlePointerMove.bind(this);
@@ -107,6 +154,7 @@ export class CursorWave {
 
         const shape = shapes[Math.floor(Math.random() * shapes.length)];
         const color = colors[Math.floor(Math.random() * colors.length)];
+        const parsed = parseColor(color);
         const angle = (Math.random() - 0.5) * 0.2; // subtle tilt
 
         this.cells.push({
@@ -118,6 +166,10 @@ export class CursorWave {
           peak: idleScale,
           shape,
           color,
+          displayColor: color,
+          startColorObj: { ...parsed },
+          targetColorObj: { ...parsed },
+          currentColorObj: { ...parsed },
           hovered: false
         });
       }
@@ -130,7 +182,6 @@ export class CursorWave {
 
     maskElements.forEach(el => {
       const r = el.getBoundingClientRect();
-      // Only mask elements currently visible within the viewport
       if (r.bottom >= 0 && r.top <= this.height && r.right >= 0 && r.left <= this.width) {
         rects.push({
           left: r.left - 12,
@@ -203,10 +254,36 @@ export class CursorWave {
       return;
     }
 
-    // Clear and fill dark background
+    // ── Smooth Color Morphing Calculation ──
+    if (this.colorTransitionStart > 0) {
+      const elapsed = currentTime - this.colorTransitionStart;
+      const rawProgress = Math.min(elapsed / this.colorTransitionDuration, 1);
+      // Smooth sinusoidal cubic ease-in-out
+      const progress = rawProgress < 0.5
+        ? 4 * rawProgress * rawProgress * rawProgress
+        : 1 - Math.pow(-2 * rawProgress + 2, 3) / 2;
+
+      // Morph Background Fill
+      this.currentBgColorStr = lerpColor(this.startBgColorObj, this.targetBgColorObj, progress);
+      this.currentBgColorObj = parseColor(this.currentBgColorStr);
+
+      // Morph Every Matrix Digit Color
+      for (let i = 0; i < this.cells.length; i++) {
+        const cell = this.cells[i];
+        cell.displayColor = lerpColor(cell.startColorObj, cell.targetColorObj, progress);
+        cell.currentColorObj = parseColor(cell.displayColor);
+      }
+
+      if (rawProgress >= 1) {
+        this.colorTransitionStart = 0;
+        this.options.backgroundColor = lerpColor(this.startBgColorObj, this.targetBgColorObj, 1);
+      }
+    }
+
+    // Clear and fill canvas with active morphed background
     ctx.clearRect(0, 0, width, height);
     ctx.globalAlpha = opts.opacity;
-    ctx.fillStyle = opts.backgroundColor;
+    ctx.fillStyle = this.currentBgColorStr || opts.backgroundColor;
     ctx.fillRect(0, 0, width, height);
 
     // Periodically sync mask positions during scrolling/layout shifts
@@ -309,10 +386,10 @@ export class CursorWave {
 
       if (cell.scale < opts.idleScale * 0.1) continue;
 
-      // 6. Canvas Draw Operation (0 and 1 in greyscale with soft ambient alpha)
+      // 6. Canvas Draw Operation (Smooth Morph Color with dynamic scale alpha)
       const alphaBoost = Math.min(0.65, 0.16 + (cell.scale - opts.idleScale) * 0.4);
       ctx.globalAlpha = alphaBoost;
-      ctx.fillStyle = cell.color;
+      ctx.fillStyle = cell.displayColor || cell.color;
 
       ctx.save();
       ctx.translate(cell.x, cell.y);
@@ -330,6 +407,35 @@ export class CursorWave {
 
     ctx.globalAlpha = 1.0;
     this.rafId = requestAnimationFrame(this.tick);
+  }
+
+  /**
+   * Smoothly interpolate the colour palette and background over 900ms.
+   * Also triggers a dynamic energy shockwave expanding from the switch source.
+   */
+  updateColors(newColors, newBgColor, originX, originY) {
+    if (newBgColor) {
+      this.startBgColorObj = { ...this.currentBgColorObj };
+      this.targetBgColorObj = parseColor(newBgColor);
+    }
+
+    if (newColors && Array.isArray(newColors) && newColors.length > 0) {
+      this.options.colors = newColors;
+      for (let i = 0; i < this.cells.length; i++) {
+        const cell = this.cells[i];
+        cell.startColorObj = { ...cell.currentColorObj };
+        const chosen = newColors[Math.floor(Math.random() * newColors.length)];
+        cell.targetColorObj = parseColor(chosen);
+      }
+    }
+
+    this.colorTransitionStart = performance.now();
+    this.colorTransitionDuration = 900;
+
+    // Trigger an expanding quantum ripple burst from the HUD location
+    const bx = originX !== undefined ? originX : (this.width - 80);
+    const by = originY !== undefined ? originY : (this.height - 80);
+    this.burst(bx, by);
   }
 
   destroy() {
