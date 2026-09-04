@@ -1,5 +1,6 @@
 node_modules/
 dist/
+old/
 .vite/
 
 # Local environment and editor files
